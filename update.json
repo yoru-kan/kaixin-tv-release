@@ -1,7 +1,7 @@
 {
-    "name":  "4.5.8",
-    "code":  40508,
-    "desc":  "## 开心TV 空壳版 v4.5.8\r\n\r\n- 优化智能跳片头片尾检测引擎：引入双阶段片头优先采样与 4 路并行 HLS 拉取，低内存环境下提速约 6 倍，精准识别常见剧集片头/片尾。\r\n- 修复多线路返回 JSON 解析包时的自动跳过回退逻辑与 ExoPlayer 播放链路边界问题。\r\n- 优化空壳包在低内存 TV 设备的解码缓存与资源回收策略，提升稳定性与响应速度。\r\n- 完整通过官方 release_policy、update_identity、source_guard 与 arm64/armv7 双架构空壳校验。",
-    "apk":  "KaixinTV-4.5.8-arm32-v7a.apk",
-    "apk64":  "KaixinTV-4.5.8-arm64.apk"
+    "name":  "4.5.9",
+    "code":  40509,
+    "desc":  "# 开心TV 4.5.9（空壳版）\n\n- 原生 MPV（libmpv/libplayer）与 MPEG-H（libmpeghJNI）双 ABI（arm64-v8a / armeabi-v7a）运行时同步发布\n- OpEdDetector 片头片尾检测边界加固与 MPV 播放器界面诚实门控\n- 保持纯空壳分发与无损覆盖升级（完整保留用户已导入点播/直播线路与全部设置）",
+    "apk":  "KaixinTV-4.5.9-arm32-v7a.apk",
+    "apk64":  "KaixinTV-4.5.9-arm64.apk"
 }
