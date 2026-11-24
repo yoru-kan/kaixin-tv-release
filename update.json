@@ -1,7 +1,7 @@
 {
-    "name":  "4.5.7",
-    "code":  40507,
-    "desc":  "开心TV 4.5.7\n\n- 首页长按遥控器确定/OK键 800ms 后软刷新当前内容；短按继续执行当前焦点项原有的确认行为。\n- 支持常见遥控器确认键码（DPAD_CENTER、ENTER）；按键重复事件不会重复安排刷新。\n- MENU键短按仍保持原有菜单动作；分类页确认键行为不变。\n- 刷新沿用现有首页逻辑；没有新增数据库迁移或清理线路、设置、播放历史的行为。",
-    "apk":  "KaixinTV-4.5.7-arm32-v7a.apk",
-    "apk64":  "KaixinTV-4.5.7-arm64.apk"
+    "name":  "4.5.8",
+    "code":  40508,
+    "desc":  "## 开心TV 空壳版 v4.5.8\r\n\r\n- 优化智能跳片头片尾检测引擎：引入双阶段片头优先采样与 4 路并行 HLS 拉取，低内存环境下提速约 6 倍，精准识别常见剧集片头/片尾。\r\n- 修复多线路返回 JSON 解析包时的自动跳过回退逻辑与 ExoPlayer 播放链路边界问题。\r\n- 优化空壳包在低内存 TV 设备的解码缓存与资源回收策略，提升稳定性与响应速度。\r\n- 完整通过官方 release_policy、update_identity、source_guard 与 arm64/armv7 双架构空壳校验。",
+    "apk":  "KaixinTV-4.5.8-arm32-v7a.apk",
+    "apk64":  "KaixinTV-4.5.8-arm64.apk"
 }
