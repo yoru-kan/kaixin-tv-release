@@ -1,7 +1,7 @@
 {
-    "name":  "4.6.0",
-    "code":  40600,
-    "desc":  "# 开心TV 4.6.0（空壳版）\r\n\r\n- 修复 MPV 慢动作/rgba16f/杜比视界色彩异常，完善 MPV 与 Exo 切换时安全重建 Surface 及软解回退机制\r\n- 加固 `PlayerManager` 生命周期释放（清理挂起预加载/解析任务与超时回调）及释放后全方法空指针防护，消除退出/切台竞态闪退\r\n- 保持纯空壳分发与无损覆盖升级（完整保留用户已导入点播/直播线路与全部设置）",
-    "apk":  "KaixinTV-4.6.0-arm32-v7a.apk",
-    "apk64":  "KaixinTV-4.6.0-arm64.apk"
+    "name":  "4.6.3",
+    "code":  40603,
+    "desc":  "# 开心TV 4.6.3（空壳版）\n\n- 所有构建（arm64-v8a / armeabi-v7a）内置 MPV 原生库，并加入 R8 JNI keep 规则，修复“未内置MPV原生库”\n- 保持纯空壳分发与无损覆盖升级（完整保留用户已导入点播/直播线路与全部设置）",
+    "apk":  "KaixinTV-4.6.3-arm32-v7a.apk",
+    "apk64":  "KaixinTV-4.6.3-arm64.apk"
 }
