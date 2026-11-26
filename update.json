@@ -1,7 +1,7 @@
 {
-  "name": "4.6.7",
-  "code": 40607,
-  "desc": "### v4.6.7 优化内容\r\n- **MPV 进一步降耗与消除 LUT 卡顿**：低配/电视端自动禁止误开 `gpu-next`（libplacebo），全局固定 `dither=ordered`、`dither-depth=8`、`fbo-format=rgba8`，并新增 `scaler-resizes-only=yes`（原生分辨率免缩放着色器），消除首帧 124ms LUT 生成阻塞与 GPU 带宽翻倍。\r\n- **生命周期加固**：修复 `PlayerManager` 构造阶段字段初始化顺序及 `MpvPlayerEngine.release()` 音频效果清理，提前预建 MPV shader 缓存目录。",
-  "apk": "KaixinTV-4.6.7-arm32-v7a.apk",
-  "apk64": "KaixinTV-4.6.7-arm64.apk"
+  "name": "4.6.8",
+  "code": 40608,
+  "desc": "# 开心TV v4.6.8 发布说明\r\n\r\n## 本次重点优化（MPV 渲染稳定性 & 生命周期修复）\r\n1. **消除轨道切换画面卡顿**：移除 `MpvPlayerEngine.onTracksChanged` 中重复的 `applyVideoEffect()`，避免切流/切音轨时重复重建 VO 滤镜链引发掉帧。\r\n2. **修复 MPV 释放竞态与外部监听残留**：`MpvPlayerEngine.release()` 增加 `volatile released` 幂等保护，同时移除内部与外部 `Player.Listener`、清理 `spec` / `lastSubUrl` 与音频特效；`stop()` 时同步清理音频特效。\r\n3. **外挂字幕去重与 HLS 重试状态复位**：`addSubtitle()` 跳过重复 URL；`PlayerManager.onPlayerError()` 在 `RECOVERED`（HLS 重试恢复）时重置 `initTrack` 并重新调度超时计时器，补充 `engine` 空指针保护。",
+  "apk": "KaixinTV-4.6.8-arm32-v7a.apk",
+  "apk64": "KaixinTV-4.6.8-arm64.apk"
 }
