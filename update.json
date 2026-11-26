@@ -1,7 +1,7 @@
 {
-  "name": "4.6.5",
-  "code": 40605,
-  "desc": "# 开心TV 4.6.5（空壳版）\n\n- 进一步优化 MPV 播放防卡顿与低配/电视端性能需求：\n  - 修复 `lowSpec` 下 `dither-depth=no` 报错回退问题，改为原生支持的 `dither=no` 彻底关闭无效抖动着色计算\n  - 将低配硬件音频缓冲 `audio-buffer` 提升至 `0.45`（通用 `0.5`）并设置 `cache-pause-wait=2`、`stream-buffer-size=512KiB`（低内存 `256KiB`）、`demuxer-readahead-secs=16`，显著减少弱网/分片切换时的反复微卡顿\n  - 收敛低配软件解码线程至 `vd-lavc-threads=2` 并启用 `sws-scaler=fast-bilinear`、`hr-seek-framedrop=yes`、`hwdec-codecs=all`\n  - `warmUpAsync` 同步预热并缓存 `mpv.conf`，降低首次起播前磁盘 I/O\n- 保持纯空壳分发与无损覆盖升级（完整保留用户已导入点播/直播接口配置与观看记录）",
-  "apk": "KaixinTV-4.6.5-arm32-v7a.apk",
-  "apk64": "KaixinTV-4.6.5-arm64.apk"
+  "name": "4.6.6",
+  "code": 40606,
+  "desc": "# 开心TV 4.6.6（空壳版）\r\n\r\n- 进一步降低 MPV 电视端/低配设备渲染负载：默认启用低开销 ordered 8-bit 抖动与 opengl-pbo=no，降低 GPU 带宽占用\r\n- 修复画面偏暗/断层与微卡顿：HDR 映射切换为自然曲线 reinhard (0.7) + gamut clip，缩减网络抖动缓冲等待至 1s 并优化音频缓冲至 0.28s\r\n- 保持纯空壳分发与无损覆盖升级（完整保留用户已导入点播/直播线路与全部设置）",
+  "apk": "KaixinTV-4.6.6-arm32-v7a.apk",
+  "apk64": "KaixinTV-4.6.6-arm64.apk"
 }
