@@ -1,7 +1,7 @@
 {
-  "name": "4.6.9",
-  "code": 40609,
-  "desc": "# 开心TV v4.6.9 发布说明\n\n## 本次重点修复与优化（电视端 MPV 流畅度与色彩根治）\n1. **根治低配/海思等电视 MPV 卡顿与人物肤色反色**：在 Android 10+ 低内存/弱配电视（非 Vulkan、非 `gpu-next` 且未在 `mpv.conf` 显式覆写 `vo`/`hwdec`）硬解场景下，自动启用 `vo=mediacodec_embed,gpu` 直通 HWC 零拷贝送显，绕开部分电视 OMX 硬解器对 `AImageReader` 缓冲数限制导致的 `mediacodec-copy` 200MB+ 内存拷贝风暴及 UV 色度互换（肤色发蓝）问题；同时支持解码异常无感回退 `vo=gpu` 与硬/软解对称切换重建。\n2. **根治播放 10 余秒后音频断流与卡顿**：低内存/弱配电视未自定义 `ao` 时优先启用纯 Native 音频后端 `ao=aaudio,opensles,audiotrack`，规避 Java `AudioTrack` 受 ART GC 停顿引发的音频 underrun 与音画抖动；同步优化 4K 缓冲策略（`demuxer-max-bytes=24MiB`、`demuxer-max-back-bytes=1MiB`、`demuxer-readahead-secs=15`、`audio-buffer=0.5`、`cache-pause-wait=3`）。\n3. **证书拷贝原子化加固**：`MpvUtil.ensureCaFileCopied` 改用临时文件 `fsync` + 原子重命名，避免异常中断残留截断证书文件。",
-  "apk": "KaixinTV-4.6.9-arm32-v7a.apk",
-  "apk64": "KaixinTV-4.6.9-arm64.apk"
+  "name": "4.6.10",
+  "code": 40610,
+  "desc": "# 开心TV v4.6.10 发布说明\n\n## 本次重点修复\n1. **修复 Android 9/10 及部分定制系统 OTA 升级提示“无法确认升级包签名”**：`Updater` 在 API 28+ 校验下载的升级包时补全 `GET_SIGNING_CERTIFICATES | GET_SIGNATURES` 标志并在 `signingInfo == null` 时安全读取 `signatures`（仍严格校验签名一致且保留全部订阅与设置），解决部分电视盒/电视系统框架跳过证书解析导致无法升级的问题。\n2. **修复退出播放页后短暂卡顿与遥控器按键无响应**：退出播放页（`isFinishing` 且无其他播放页接管）时，在 `onPause()` 先保存播放进度并发出异步 `stop`，趁转场动画期间在后台线程干净关闭海思/OMX 硬解器与音频，避免返回首页后 `SurfaceView` 销毁在主线程同步阻塞等待硬件解码器释放（此前实测主线程阻塞 400–500ms+ 并伴随 `ACodec -19` / OSD `GLES 0x505`）。\n3. **消除低配/海思电视偶发 1080p 肤色发蓝**：低内存电视默认 `hwdec` 改为 `mediacodec,no`，彻底禁止首开竞态或硬解不支持流时静默降级至 `mediacodec-copy`（海思 `0x7fa30c00` NV21 误读为 NV12 引发 UV 反色发蓝与高内存拷贝）。",
+  "apk": "KaixinTV-4.6.10-arm32-v7a.apk",
+  "apk64": "KaixinTV-4.6.10-arm64.apk"
 }
